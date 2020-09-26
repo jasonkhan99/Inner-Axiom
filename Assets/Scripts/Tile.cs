@@ -10,6 +10,9 @@ public class Tile : MonoBehaviour
     public bool selectableTile = false;
     public List<Tile> tileAdjacencyList = new List<Tile>();
     public int tileDistance = 0;
+    public bool visitedTile = false;
+    public Tile parentTile = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +24,19 @@ public class Tile : MonoBehaviour
     {
         if (currentTile)
         {
-            
+            GetComponent<Renderer>().material.color = Color.magenta;
+        }
+        else if (targetTile)
+        {
+            GetComponent<Renderer>().material.color = Color.green;
+        }
+        else if (selectableTile)
+        {
+            GetComponent<Renderer>().material.color = Color.green;
+        }
+        else
+        {
+            GetComponent<Renderer>().material.color = Color.white;
         }
     }
 
@@ -33,4 +48,33 @@ public class Tile : MonoBehaviour
         selectableTile = false;
         tileDistance = 0;
     }
+
+    public void FindNeighborTiles(float jumpHeight)
+    {
+        Reset();
+        CheckTile(Vector3.forward);
+        CheckTile(-Vector3.forward);
+        CheckTile(Vector3.right);
+        CheckTile(-Vector3.right);
+    }
+
+    public void CheckTile(Vector3 direction, float jumpHeight)
+    {
+        Vector3 halfExtends = new Vector3(.25f, .25f + jumpHeight, .25f);
+        Collider[] colliders = Physics.OverlapBox(transform.position + direction, halfExtends);
+        foreach (Collider item in colliders)
+        {
+            Tile tile = item.GetComponent<Tile>();
+            if (tile != null && tile.walkableTile)
+            {
+                RaycastHit hit;
+                if (!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1))
+                {
+                    tileAdjacencyList.Add(tile);
+                }
+            }
+        }
+    }
+
+
 }
