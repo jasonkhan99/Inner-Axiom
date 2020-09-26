@@ -7,7 +7,7 @@ public class CameraControl : MonoBehaviour
     public GameObject targetObject;
     private float targetAngle = 0;
     const float rotationAmount = 1.5f;
-    public float rDistance = 1.0f;
+    public float rDistance = 5f;
     public float rSpeed = 1.0f;
     
     // Update is called once per frame
@@ -15,9 +15,9 @@ public class CameraControl : MonoBehaviour
     {
     
         // Trigger functions if Rotate is requested
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+        if (Input.GetKeyDown(KeyCode.Minus)) {
             targetAngle -= 90.0f;
-        } else if (Input.GetKeyDown(KeyCode.RightArrow)) {
+        } else if (Input.GetKeyDown(KeyCode.Equals)) {
             targetAngle += 90.0f;
         }
     
