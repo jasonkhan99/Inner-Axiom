@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 2085636704}
   - component: {fileID: 2085636703}
   m_Layer: 0
-  m_Name: PlayerStandIn
+  m_Name: CharacterStandIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
