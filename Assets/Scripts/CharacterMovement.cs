@@ -37,12 +37,40 @@ public class CharacterMovement : MonoBehaviour
         return tile;
     }
 
-    public void computeTileAdjacencyList()
+    public void ComputeTileAdjacencyList()
     {
         foreach (GameObject tile in tiles)
         {
             Tile t = tile.GetComponent<Tile>();
             t.FindNeighborTiles(jumpHeight);
+        }
+    }
+
+    public void findSelectableTiles()
+    {
+        ComputeTileAdjacencyList();
+        GetCurrentTile();
+        Queue<Tile> process = new Queue<Tile>();
+        process.Enqueue(currentTile);
+        currentTile.visitedTile = true;
+        while (process.Count > 0)
+        {
+            Tile t = process.Dequeue();
+            selectableTiles.Add(t);
+            t.selectableTile = true;
+            if (t.distance < move)
+            {
+                foreach (Tile tile in t.tileAdjacencyList)
+                {
+                    if (!tile.visitedTile)
+                    {
+                        tile.parentTile = t;
+                        tile.visitedTile = true;
+                        tile.tileDistance = 1 + t.tileDistance;
+                        process.Enqueue(tile);
+                    }
+                }
+            }
         }
     }
 
