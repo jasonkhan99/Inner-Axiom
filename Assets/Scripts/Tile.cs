@@ -60,8 +60,8 @@ public class Tile : MonoBehaviour
 
     public void CheckTile(Vector3 direction, float jumpHeight)
     {
-        Vector3 halfExtends = new Vector3(.25f, .25f + jumpHeight, .25f);
-        Collider[] colliders = Physics.OverlapBox(transform.position + direction, halfExtends);
+        Vector3 halfExtents = new Vector3(.25f, .25f + jumpHeight, .25f);
+        Collider[] colliders = Physics.OverlapBox(transform.position + direction, halfExtents);
         foreach (Collider item in colliders)
         {
             Tile tile = item.GetComponent<Tile>();
