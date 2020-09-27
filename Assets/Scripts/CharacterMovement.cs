@@ -37,4 +37,13 @@ public class CharacterMovement : MonoBehaviour
         return tile;
     }
 
+    public void computeTileAdjacencyList()
+    {
+        foreach (GameObject tile in tiles)
+        {
+            Tile t = tile.GetComponent<Tile>();
+            t.FindNeighborTiles(jumpHeight);
+        }
+    }
+
 }
