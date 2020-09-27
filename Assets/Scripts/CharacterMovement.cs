@@ -40,6 +40,7 @@ public class CharacterMovement : MonoBehaviour
 
     public void ComputeTileAdjacencyList()
     {
+        tiles = GameObject.FindGameObjectsWithTag("Tile");
         foreach (GameObject tile in tiles)
         {
             Tile t = tile.GetComponent<Tile>();
