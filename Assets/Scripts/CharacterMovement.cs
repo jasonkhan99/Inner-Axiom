@@ -11,6 +11,7 @@ public class CharacterMovement : MonoBehaviour
     public int move = 5;
     public float jumpHeight = 1;
     public float moveSpeed = 2;
+    public float halfHeight = 0;
     Vector3 velocity = new Vector3();
     Vector3 heading = new Vector3();
 
@@ -26,13 +27,13 @@ public class CharacterMovement : MonoBehaviour
         currentTile.currentTile = true;
     }
 
-    public Tile GetTargetTile(GameObject targetTile)
+    public Tile GetTargetTile(GameObject target)
     {
         RaycastHit hit;
         Tile tile = null;
-        if (Physics.Raycast(targetTile.transform.position, -Vector3.up, out hit, 1))
+        if (Physics.Raycast(target.transform.position, -Vector3.up, out hit, 1))
         {
-            tiles = hit.collider.GetComponent<Tile>();
+            tile = hit.collider.GetComponent<Tile>();
         }
         return tile;
     }
@@ -58,7 +59,7 @@ public class CharacterMovement : MonoBehaviour
             Tile t = process.Dequeue();
             selectableTiles.Add(t);
             t.selectableTile = true;
-            if (t.distance < move)
+            if (t.tileDistance < move)
             {
                 foreach (Tile tile in t.tileAdjacencyList)
                 {

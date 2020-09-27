@@ -52,10 +52,10 @@ public class Tile : MonoBehaviour
     public void FindNeighborTiles(float jumpHeight)
     {
         Reset();
-        CheckTile(Vector3.forward);
-        CheckTile(-Vector3.forward);
-        CheckTile(Vector3.right);
-        CheckTile(-Vector3.right);
+        CheckTile(Vector3.forward, jumpHeight);
+        CheckTile(-Vector3.forward, jumpHeight);
+        CheckTile(Vector3.right, jumpHeight);
+        CheckTile(-Vector3.right, jumpHeight);
     }
 
     public void CheckTile(Vector3 direction, float jumpHeight)
