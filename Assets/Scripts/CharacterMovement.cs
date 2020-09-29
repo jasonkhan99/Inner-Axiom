@@ -91,4 +91,31 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    public void CharacterMove()
+    {
+        if (path.Count > 0)
+        {
+            
+        }
+        else
+        {
+            RemoveSelectableTiles();
+            moving = false;
+        }
+    }
+
+    protected void RemoveSelectableTiles()
+    {
+        if (currentTile != null)
+        {
+            currentTile.currentTile = false;
+            currentTile = null;
+        }
+        foreach (Tile tile in selectableTiles)
+        {
+            tile.Reset();
+        }
+        selectableTiles.Clear();
+    }
+
 }
