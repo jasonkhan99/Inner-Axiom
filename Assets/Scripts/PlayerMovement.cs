@@ -13,6 +13,35 @@ public class PlayerMovement : CharacterMovement
     // Update is called once per frame
     void Update()
     {
-        findSelectableTiles();
+        if (!moving)
+        {
+            FindSelectableTiles();
+            CheckMouseClick();
+        }
+        else
+        {
+
+        }
+    }
+
+    void CheckMouseClick()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider.tag == "Tile")
+                {
+                    Tile t = hit.collider.GetComponent<Tile>();
+                    if (t.selectableTile)
+                    {
+                        t.targetTile = true;
+                        moving = true;
+                    }
+                }
+            }
+        }
     }
 }

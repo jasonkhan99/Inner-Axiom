@@ -8,6 +8,7 @@ public class CharacterMovement : MonoBehaviour
     GameObject[] tiles;
     Stack<Tile> path = new Stack<Tile>();
     Tile currentTile;
+    public bool moving = false;
     public int move = 5;
     public float jumpHeight = 1;
     public float moveSpeed = 2;
@@ -48,7 +49,7 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    public void findSelectableTiles()
+    public void FindSelectableTiles()
     {
         ComputeTileAdjacencyList();
         GetCurrentTile();
