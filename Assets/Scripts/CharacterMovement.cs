@@ -6,13 +6,21 @@ public class CharacterMovement : MonoBehaviour
 {
     List<Tile> selectableTiles = new List<Tile>();
     GameObject[] tiles;
+
     Stack<Tile> path = new Stack<Tile>();
     Tile currentTile;
+
     public bool moving = false;
     public int move = 5;
     public float jumpHeight = 1;
     public float moveSpeed = 2;
-    public float halfHeight = 0;
+
+    float halfHeight = 0;
+    
+    bool fallingDown = false;
+    bool jumpingUp = false;
+    bool movingToEdge = false;
+
     Vector3 velocity = new Vector3();
     Vector3 heading = new Vector3();
 
