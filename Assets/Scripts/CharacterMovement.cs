@@ -166,20 +166,40 @@ public class CharacterMovement : MonoBehaviour
     {
         if (fallingDown)
         {
-
+            FallDownward(target);
         }
         else if (jumpingUp)
         {
-
+            JumpUpward(target);
         }
         else if (movingToEdge)
         {
-
+            MoveToEdge();
         }
         else
         {
             PrepareJump(target);
         }
+    }
+
+    void PrepareJump(Vector3 target)
+    {
+
+    }
+
+    void FallDownward(Vector3 target)
+    {
+
+    }
+
+    void JumpUpward(Vector3 target)
+    {
+
+    }
+
+    void MoveToEdge()
+    {
+        
     }
 
 }
