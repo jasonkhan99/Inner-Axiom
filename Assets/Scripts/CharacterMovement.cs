@@ -191,7 +191,7 @@ public class CharacterMovement : MonoBehaviour
 
         CalculateHeading(target);
 
-        if (transform.position.y > target.y)
+        if (transform.position.y > targetY)
         {
             fallingDown = false;
             jumpingUp = false;
@@ -221,6 +221,8 @@ public class CharacterMovement : MonoBehaviour
         if (transform.position.y <= target.y)
         {
             fallingDown = false;
+            jumpingUp = false;
+            movingToEdge = false;
 
             Vector3 p = transform.position;
             p.y = target.y;
@@ -252,7 +254,7 @@ public class CharacterMovement : MonoBehaviour
             movingToEdge = false;
             fallingDown = true;
 
-            velocity /= 3.0f;
+            velocity /= 4.0f;
             velocity.y = 1.5f;
         }
     }
