@@ -221,7 +221,13 @@ public class CharacterMovement : MonoBehaviour
 
     void JumpUpward(Vector3 target)
     {
+        velocity += Physics.gravity * Time.deltaTime;
 
+        if (transform.position.y > target.y)
+        {
+            jumpingUp = false;
+            fallingDown = true;
+        }
     }
 
     void MoveToEdge()
