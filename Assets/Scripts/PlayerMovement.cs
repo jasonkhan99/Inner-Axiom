@@ -37,8 +37,7 @@ public class PlayerMovement : CharacterMovement
                     Tile t = hit.collider.GetComponent<Tile>();
                     if (t.selectableTile)
                     {
-                        t.targetTile = true;
-                        moving = true;
+                        MoveToTile(t);
                     }
                 }
             }

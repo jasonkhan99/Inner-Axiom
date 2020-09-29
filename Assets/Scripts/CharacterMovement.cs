@@ -77,4 +77,18 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    public void MoveToTile(Tile tile)
+    {
+        path.Clear();
+        t.targetTile = true;
+        moving = true;
+
+        Tile nextTile = tile;
+        while (nextTile != null)
+        {
+            path.Push(next);
+            nextTile = nextTile.parentTile;
+        }
+    }
+
 }
