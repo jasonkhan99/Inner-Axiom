@@ -20,7 +20,7 @@ public class PlayerMovement : CharacterMovement
         }
         else
         {
-            
+            CharacterMove();
         }
     }
 

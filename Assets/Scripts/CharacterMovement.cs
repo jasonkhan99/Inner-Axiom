@@ -80,13 +80,13 @@ public class CharacterMovement : MonoBehaviour
     public void MoveToTile(Tile tile)
     {
         path.Clear();
-        t.targetTile = true;
+        tile.targetTile = true;
         moving = true;
 
         Tile nextTile = tile;
         while (nextTile != null)
         {
-            path.Push(next);
+            path.Push(nextTile);
             nextTile = nextTile.parentTile;
         }
     }
@@ -98,10 +98,13 @@ public class CharacterMovement : MonoBehaviour
             Tile t = path.Peek();
             Vector3 target = t.transform.position;
             //Calculate the unit's position on top of the target tile
-            target.y == halfHeight + t.GetComponent<Collider>().bounds.extents.y;
-            if (Vector3.Distance(transform.position, target) >= .05f)
+            target.y += halfHeight + t.GetComponent<Collider>().bounds.extents.y;
+            if (Vector3.Distance(transform.position, target) >= 0.05f)
             {
                 CalculateHeading(target);
+                SetHorizontalVelocity();
+                transform.forward = heading;
+                transform.position += velocity * Time.deltaTime;
             }
             else
             {
@@ -134,6 +137,11 @@ public class CharacterMovement : MonoBehaviour
     {
         heading = target - transform.position;
         heading.Normalize();
+    }
+
+    void SetHorizontalVelocity()
+    {
+        velocity = heading * moveSpeed;
     }
 
 }
