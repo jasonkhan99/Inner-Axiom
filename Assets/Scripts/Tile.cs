@@ -32,7 +32,7 @@ public class Tile : MonoBehaviour
         }
         else if (selectableTile)
         {
-            GetComponent<Renderer>().material.color = Color.green;
+            GetComponent<Renderer>().material.color = Color.yellow;
         }
         else
         {
@@ -46,7 +46,9 @@ public class Tile : MonoBehaviour
         currentTile = false;
         targetTile = false;
         selectableTile = false;
+        parentTile = null;
         tileDistance = 0;
+        visitedTile = false;
     }
 
     public void FindNeighborTiles(float jumpHeight)
