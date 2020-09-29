@@ -101,13 +101,23 @@ public class CharacterMovement : MonoBehaviour
             target.y += halfHeight + t.GetComponent<Collider>().bounds.extents.y;
             if (Vector3.Distance(transform.position, target) >= 0.05f)
             {
-                CalculateHeading(target);
-                SetHorizontalVelocity();
+                bool jump = transform.position.y != target.y;
+                if (jump)
+                {
+                    CharacterJump(target);
+                }
+                else
+                {
+                    CalculateHeading(target);
+                    SetHorizontalVelocity();
+                }
+                //locomotion + animation
                 transform.forward = heading;
                 transform.position += velocity * Time.deltaTime;
             }
             else
             {
+                //Tile center reached
                 transform.position = target;
                 path.Pop();
             }
@@ -142,6 +152,26 @@ public class CharacterMovement : MonoBehaviour
     void SetHorizontalVelocity()
     {
         velocity = heading * moveSpeed;
+    }
+
+    void CharacterJump(Vector3 target)
+    {
+        if (fallingDown)
+        {
+
+        }
+        else if (jumpingUp)
+        {
+
+        }
+        else if (movingToEdge)
+        {
+
+        }
+        else
+        {
+            PrepareJump(target);
+        }
     }
 
 }
