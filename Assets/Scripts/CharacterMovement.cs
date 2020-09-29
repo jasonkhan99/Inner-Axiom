@@ -14,12 +14,14 @@ public class CharacterMovement : MonoBehaviour
     public int move = 5;
     public float jumpHeight = 1;
     public float moveSpeed = 2;
+    public float jumpVelocity = 4.5f;
 
     float halfHeight = 0;
     
     bool fallingDown = false;
     bool jumpingUp = false;
     bool movingToEdge = false;
+    Vector3 jumpTarget;
 
     Vector3 velocity = new Vector3();
     Vector3 heading = new Vector3();
@@ -184,7 +186,32 @@ public class CharacterMovement : MonoBehaviour
 
     void PrepareJump(Vector3 target)
     {
+        float targetY = target.y;
+        target.y = transform.position.y;
 
+        CalculateHeading(target);
+
+        if (transform.position.y > target.y)
+        {
+            fallingDown = false;
+            jumpingUp = false;
+            movingToEdge = true;
+
+            jumpTarget = transform.position + (target - transform.position) / 2.0f;
+        }
+        else
+        {
+            fallingDown = false;
+            jumpingUp = true;
+            movingToEdge = false;
+
+            velocity = heading * moveSpeed / 3.0f;
+
+            float difference = targetY - transform.position.y;
+
+            velocity.y = jumpVelocity * (0.5f + difference / 2.0f);
+        }
+        
     }
 
     void FallDownward(Vector3 target)
@@ -199,7 +226,7 @@ public class CharacterMovement : MonoBehaviour
 
     void MoveToEdge()
     {
-        
+
     }
 
 }
