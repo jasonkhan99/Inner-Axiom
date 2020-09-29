@@ -243,7 +243,18 @@ public class CharacterMovement : MonoBehaviour
 
     void MoveToEdge()
     {
+        if (Vector3.Distance(transform.position, jumpTarget) >= 0.05f)
+        {
+            SetHorizontalVelocity();
+        }
+        else
+        {
+            movingToEdge = false;
+            fallingDown = true;
 
+            velocity /= 3.0f;
+            velocity.y = 1.5f;
+        }
     }
 
 }
