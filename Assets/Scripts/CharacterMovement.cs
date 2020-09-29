@@ -216,7 +216,18 @@ public class CharacterMovement : MonoBehaviour
 
     void FallDownward(Vector3 target)
     {
+        velocity += Physics.gravity * Time.deltaTime;
 
+        if (transform.position.y <= target.y)
+        {
+            fallingDown = false;
+
+            Vector3 p = transform.position;
+            p.y = target.y;
+            transform.position = p;
+
+            velocity = new Vector3();
+        }
     }
 
     void JumpUpward(Vector3 target)
