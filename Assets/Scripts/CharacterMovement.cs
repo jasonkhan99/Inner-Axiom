@@ -95,7 +95,19 @@ public class CharacterMovement : MonoBehaviour
     {
         if (path.Count > 0)
         {
-            
+            Tile t = path.Peek();
+            Vector3 target = t.transform.position;
+            //Calculate the unit's position on top of the target tile
+            target.y == halfHeight + t.GetComponent<Collider>().bounds.extents.y;
+            if (Vector3.Distance(transform.position, target) >= .05f)
+            {
+                CalculateHeading(target);
+            }
+            else
+            {
+                transform.position = target;
+                path.Pop();
+            }
         }
         else
         {
@@ -116,6 +128,12 @@ public class CharacterMovement : MonoBehaviour
             tile.Reset();
         }
         selectableTiles.Clear();
+    }
+
+    void CalculateHeading(Vector3 target)
+    {
+        heading = target - transform.position;
+        heading.Normalize();
     }
 
 }
