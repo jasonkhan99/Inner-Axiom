@@ -44,5 +44,17 @@ public class TurnManager : MonoBehaviour
     static void EndTurn()
     {
         TacticsMove unit = turnTeam.Dequeue();
+        unit.EndTurn();
+
+        if (turnTeam.Count > 0)
+        {
+            StartTurn();
+        }
+        else
+        {
+            string team = turnKey.Dequeue();
+            turnKey.Enqueue(team);
+            InitTeamTurnQueue();
+        }
     }
 }
