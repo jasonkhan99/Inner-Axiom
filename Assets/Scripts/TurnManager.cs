@@ -31,6 +31,8 @@ public class TurnManager : MonoBehaviour
         {
             turnTeam.Enqueue(unit);
         }
+
+        StartTurn();
     }
 
     public static void StartTurn()
