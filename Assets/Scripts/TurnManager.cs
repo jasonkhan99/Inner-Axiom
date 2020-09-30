@@ -57,4 +57,24 @@ public class TurnManager : MonoBehaviour
             InitTeamTurnQueue();
         }
     }
+
+    public static void AddUnit(CharacterMovement unit)
+    {
+        List<CharacterMovement> list;
+
+        if (!units.ContainsKey(unit.tag))
+        {
+            list = new List<CharacterMovement>();
+            units[unit.tag] = list;
+
+            if (!turnKey.Contains(unit.tag))
+            {
+                turnKey.Enqueue(unit.tag);
+            }
+        }
+        else
+        {
+            list = units[unit.tag];
+        }
+    }
 }
