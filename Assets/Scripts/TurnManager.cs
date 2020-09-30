@@ -6,7 +6,7 @@ public class TurnManager : MonoBehaviour
 {
     static Dictionary<string, List<CharacterMovement>> units = new Dictionary<string, List<CharacterMovement>>();
     static Queue<string> turnKey = new Queue<string>();
-    static Queue<CharacterMove> turnTeam = new Queue<CharacterMove>();
+    static Queue<CharacterMovement> turnTeam = new Queue<CharacterMovement>();
 
     // Start is called before the first frame update
     void Start()
