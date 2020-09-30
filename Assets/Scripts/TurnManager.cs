@@ -76,5 +76,7 @@ public class TurnManager : MonoBehaviour
         {
             list = units[unit.tag];
         }
+
+        list.Add(unit);
     }
 }

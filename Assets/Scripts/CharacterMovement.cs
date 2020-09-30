@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
+    public bool turn = false;
+    
     List<Tile> selectableTiles = new List<Tile>();
     GameObject[] tiles;
 
@@ -261,7 +263,7 @@ public class CharacterMovement : MonoBehaviour
 
     public void BeginTurn()
     {
-        
+
     }
 
 }
