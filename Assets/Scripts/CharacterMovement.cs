@@ -259,4 +259,9 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    public void BeginTurn()
+    {
+        
+    }
+
 }

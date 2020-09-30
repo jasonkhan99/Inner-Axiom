@@ -33,11 +33,16 @@ public class TurnManager : MonoBehaviour
         }
     }
 
-    static void StartTurn()
+    public static void StartTurn()
     {
         if (turnTeam.Count > 0)
         {
-            
+            turnTeam.Peek().BeginTurn();
         }
+    }
+
+    static void EndTurn()
+    {
+        TacticsMove unit = turnTeam.Dequeue();
     }
 }
