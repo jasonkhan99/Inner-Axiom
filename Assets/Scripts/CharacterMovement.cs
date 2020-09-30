@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     public bool turn = false;
-    
+
     List<Tile> selectableTiles = new List<Tile>();
     GameObject[] tiles;
 
@@ -31,7 +31,10 @@ public class CharacterMovement : MonoBehaviour
     protected void Init()
     {
         tiles = GameObject.FindGameObjectsWithTag("Tile");
+
         halfHeight = GetComponent<Collider>().bounds.extents.y;
+
+        TurnManager.AddUnit(this);
     }
 
     public void GetCurrentTile()
@@ -44,6 +47,7 @@ public class CharacterMovement : MonoBehaviour
     {
         RaycastHit hit;
         Tile tile = null;
+
         if (Physics.Raycast(target.transform.position, -Vector3.up, out hit, 1))
         {
             tile = hit.collider.GetComponent<Tile>();
@@ -114,6 +118,7 @@ public class CharacterMovement : MonoBehaviour
             if (Vector3.Distance(transform.position, target) >= 0.05f)
             {
                 bool jump = transform.position.y != target.y;
+
                 if (jump)
                 {
                     CharacterJump(target);
@@ -123,6 +128,7 @@ public class CharacterMovement : MonoBehaviour
                     CalculateHeading(target);
                     SetHorizontalVelocity();
                 }
+
                 //locomotion + animation
                 transform.forward = heading;
                 transform.position += velocity * Time.deltaTime;
@@ -138,6 +144,8 @@ public class CharacterMovement : MonoBehaviour
         {
             RemoveSelectableTiles();
             moving = false;
+
+            TurnManager.EndTurn();
         }
     }
 
