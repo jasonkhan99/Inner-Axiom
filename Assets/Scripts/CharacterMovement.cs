@@ -131,7 +131,14 @@ public class CharacterMovement : MonoBehaviour
 
                 //locomotion + animation
                 transform.forward = heading;
-                transform.position += velocity * Time.deltaTime;
+                if (movingToEdge) 
+                {
+                    transform.position = Vector3.MoveTowards (transform.position, jumpTarget, moveSpeed * Time.deltaTime);
+                }
+                else
+                {
+                    transform.position += velocity * Time.deltaTime;
+                }
             }
             else
             {
@@ -264,7 +271,7 @@ public class CharacterMovement : MonoBehaviour
             movingToEdge = false;
             fallingDown = true;
 
-            velocity /= 4.0f;
+            velocity /= 3.0f;
             velocity.y = 1.5f;
         }
     }
