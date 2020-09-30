@@ -32,4 +32,12 @@ public class TurnManager : MonoBehaviour
             turnTeam.Enqueue(unit);
         }
     }
+
+    static void StartTurn()
+    {
+        if (turnTeam.Count > 0)
+        {
+            
+        }
+    }
 }
