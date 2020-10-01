@@ -284,6 +284,10 @@ public class CharacterMovement : MonoBehaviour
         ComputeTileAdjacencyList(jumpHeight, target);
         GetCurrentTile();
 
+        List<Tile> openList = new List<Tile>();
+        List<Tile> closedList = new List<Tile>();
+
+        openList.Add(currentTile);
         
 
     }
