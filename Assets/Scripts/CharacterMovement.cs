@@ -55,23 +55,26 @@ public class CharacterMovement : MonoBehaviour
         return tile;
     }
 
-    public void ComputeTileAdjacencyList()
+    public void ComputeTileAdjacencyList(float jumpHeight, Tile target)
     {
         tiles = GameObject.FindGameObjectsWithTag("Tile");
         foreach (GameObject tile in tiles)
         {
             Tile t = tile.GetComponent<Tile>();
-            t.FindNeighborTiles(jumpHeight);
+            t.FindNeighborTiles(jumpHeight, target);
         }
     }
 
     public void FindSelectableTiles()
     {
-        ComputeTileAdjacencyList();
+        ComputeTileAdjacencyList(jumpHeight, null);
         GetCurrentTile();
+
         Queue<Tile> process = new Queue<Tile>();
+
         process.Enqueue(currentTile);
         currentTile.visitedTile = true;
+
         while (process.Count > 0)
         {
             Tile t = process.Dequeue();
@@ -274,6 +277,15 @@ public class CharacterMovement : MonoBehaviour
             velocity /= 3.0f;
             velocity.y = 1.5f;
         }
+    }
+
+    protected void FindPath(Tile target)
+    {
+        ComputeTileAdjacencyList(jumpHeight, target);
+        GetCurrentTile();
+
+        
+
     }
 
     public void BeginTurn()
