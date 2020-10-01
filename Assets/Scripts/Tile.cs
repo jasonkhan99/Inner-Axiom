@@ -8,10 +8,18 @@ public class Tile : MonoBehaviour
     public bool currentTile = false;
     public bool targetTile = false;
     public bool selectableTile = false;
+
     public List<Tile> tileAdjacencyList = new List<Tile>();
+
+    // needed for BFS (breadth first search)
     public int tileDistance = 0;
     public bool visitedTile = false;
     public Tile parentTile = null;
+
+    // For A* (A Star)
+    public float f = 0;
+    public float g = 0;
+    public float h = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -43,12 +51,17 @@ public class Tile : MonoBehaviour
     public void Reset()
     {
         tileAdjacencyList.Clear();
+
         currentTile = false;
         targetTile = false;
         selectableTile = false;
+
         parentTile = null;
         tileDistance = 0;
         visitedTile = false;
+
+        f = g = h = 0;
+
     }
 
     public void FindNeighborTiles(float jumpHeight, Tile target)
