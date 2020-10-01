@@ -290,6 +290,9 @@ public class CharacterMovement : MonoBehaviour
                 lowest = t;
             }
         }
+
+        list.Remove(lowest);
+
         return lowest;
     }
 
@@ -309,6 +312,43 @@ public class CharacterMovement : MonoBehaviour
         while (openList.Count > 0)
         {
             Tile t = FindLowestF(openList);
+
+            closedList.Add(t);
+
+            if (t == target)
+            {
+                return;
+            }
+
+            foreach (Tile tile in t.tileAdjacencyList)
+            {
+                if (closedList.Contains(tile))
+                {
+
+                }
+                else if (openList.Contains(tile))
+                {
+                    float tempG = t.g + Vector3.Distance(tile.transform.position, t.transform.position);
+
+                    if (tempG < tile.g)
+                    {
+                        tile.parentTile = t;
+
+                        tile.g = tempG;
+                        tile.f = tile.g + tile.h;
+                    }
+                }
+                else
+                {
+                    tile.parentTile = t;
+
+                    tile.g = t.g + Vector3.Distance(tile.transform.position, t.transform.position);
+                    tile.h = Vector3.Distance(tile.transform.position, target.transform.position);
+                    tile.f = tile.g + tile.h;
+
+                    openList.Add(tile);
+                }
+            }
 
         }
 
