@@ -279,6 +279,20 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    protected Tile FindLowestF(List<Tile> list)
+    {
+        Tile lowest = list[0];
+
+        foreach (Tile t in list)
+        {
+            if (t.f < lowest.f)
+            {
+                lowest = t;
+            }
+        }
+        return lowest;
+    }
+
     protected void FindPath(Tile target)
     {
         ComputeTileAdjacencyList(jumpHeight, target);
@@ -288,7 +302,18 @@ public class CharacterMovement : MonoBehaviour
         List<Tile> closedList = new List<Tile>();
 
         openList.Add(currentTile);
-        
+
+        currentTile.h = Vector3.Distance(currentTile.transform.position, target.transform.position);
+        currentTile.f = currentTile.h;
+
+        while (openList.Count > 0)
+        {
+            Tile t = FindLowestF(openList);
+
+        }
+
+        // what to do if no path to target tile
+        Debug.Log("Path not found");
 
     }
 
