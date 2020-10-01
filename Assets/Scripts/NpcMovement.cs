@@ -39,4 +39,25 @@ public class NpcMovement : CharacterMovement
         Tile targetTile = GetTargetTile(target);
 
     }
+
+    void FindNearestTarget()
+    {
+        GameObject[] targets = GameObject.FindGameObjectWithTag("Player");
+
+        GameObject nearest = null;
+        float distance = Mathf.Infinity;
+
+        foreach (GameObject obj in targets)
+        {
+            float d = Vector3.distance(transform.position, obj.transform.position);
+            
+            if (d < distance)
+            {
+                distance = d;
+                nearest = obj;
+            }
+        }
+
+        target = nearest;
+    }
 }
