@@ -343,14 +343,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1305594355}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12b37ad1acd2d43cf92099696e6fdb92, type: 3}
+  m_Script: {fileID: 11500000, guid: 514151e9301e5413c8386f4aaa046659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moving: 0
-  move: 5
-  jumpHeight: 1
-  moveSpeed: 2
-  jumpVelocity: 4.5
 --- !u!136 &1305594357
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -542,6 +537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b37ad1acd2d43cf92099696e6fdb92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turn: 0
   moving: 0
   move: 5
   jumpHeight: 1
