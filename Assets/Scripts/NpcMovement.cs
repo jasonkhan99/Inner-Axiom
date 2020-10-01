@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NpcMovement : CharacterMovement
 {
+    GameObject target;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +24,19 @@ public class NpcMovement : CharacterMovement
         
         if (!moving)
         {
+            FindNearestTarget();
+            CalculatePath();
             FindSelectableTiles();
         }
         else
         {
             CharacterMove();
         }
+    }
+
+    void CalculatePath()
+    {
+        Tile targetTile = GetTargetTile(target);
+
     }
 }
