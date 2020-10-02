@@ -45,4 +45,38 @@ public class BattleMenuPanelController : MonoBehaviour
             menuEntries.Clear();
         }
     }
+
+    Tweener TogglePos (string pos)
+    {
+        Tweener t = panel.SetPosition(pos, true);
+        t.easingControl.duration = 0.5f;
+        t.easingControl.equation = EasingEquations.EaseOutQuad;
+        return t;
+    }
+
+    bool SetSelection (int value)
+    {
+        if (menuEntries[value].IsLocked)
+        {
+            return false;
+        }
+        // Deselect the previously selected entry
+        if (selection >= 0 && selection < menuEntries.Count)
+        {
+            menuEntries[selection].IsSelected = false;
+            selection = value;
+        }
+        // Select the new entry
+        if (selection >= 0 && selection < menuEntries.Count)
+        {
+            menuEntries[selection].IsSelected = true;
+            return true;
+        }
+    }
+
+    void Start ()
+    {
+        panel.SetPosition(HideKey, false);
+        canvas.SetActive(false);
+    }
 }
