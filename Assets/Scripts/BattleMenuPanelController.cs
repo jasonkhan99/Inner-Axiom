@@ -94,6 +94,23 @@ public class BattleMenuPanelController : MonoBehaviour
         }
     }
 
+    public void Show (string title, List<string> options)
+    {
+        canvas.SetActive(true);
+        Clear ();
+        titleLabel.text = title;
+
+        for (int i = 0; i < options.Count; ++i)
+        {
+            AbilityMenuEntry entry = Dequeue();
+            entry.Title = options[i];
+            menuEntries.Add(entry);
+        }
+
+        SetSelection(0);
+        TogglePos(ShowKey);
+    }
+
     void Start ()
     {
         panel.SetPosition(HideKey, false);
