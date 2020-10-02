@@ -93,6 +93,11 @@ public class BattleMenu : MonoBehaviour
     {
     outline = label.GetComponent<Outline>();
     }
+
+    public void Reset ()
+    {
+        State = States.None;
+    }
     // Start is called before the first frame update
     void Start()
     {
