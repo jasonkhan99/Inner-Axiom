@@ -28,6 +28,8 @@ public class CharacterMovement : MonoBehaviour
     Vector3 velocity = new Vector3();
     Vector3 heading = new Vector3();
 
+    public Tile actualTargetTile;
+
     protected void Init()
     {
         tiles = GameObject.FindGameObjectsWithTag("Tile");
@@ -296,6 +298,31 @@ public class CharacterMovement : MonoBehaviour
         return lowest;
     }
 
+    protected Tile FindEndTile(Tile t)
+    {
+        Stack<Tile> tempPath= new Stack<Tile>();
+
+        Tile next = t.parentTile;
+        while (next != null)
+        {
+            tempPath.Push(next);
+            next = next.parentTile;
+        }
+
+        if (tempPath.Count <= move)
+        {
+            return t.parentTile;
+        }
+        
+        Tile endTile = null;
+        for (int i = 0; i <= move; i++)
+        {
+            endTile = tempPath.Pop();
+        }
+
+        return endTile;
+    }
+
     protected void FindPath(Tile target)
     {
         ComputeTileAdjacencyList(jumpHeight, target);
@@ -317,6 +344,8 @@ public class CharacterMovement : MonoBehaviour
 
             if (t == target)
             {
+                actualTargetTile = FindEndTile(t);
+                MoveToTile(actualTargetTile);
                 return;
             }
 
