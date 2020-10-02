@@ -36,4 +36,13 @@ public class BattleMenuPanelController : MonoBehaviour
         Poolable p = entry.GetComponent<Poolable>();
         GameObjectPoolController.Enqueue(p);
     }
+
+    void Clear ()
+    {
+        for (int i = menuEntries.Count - 1; i >= 0; --i)
+        {
+            Enqueue(menuEntries[i]);
+            menuEntries.Clear();
+        }
+    }
 }
