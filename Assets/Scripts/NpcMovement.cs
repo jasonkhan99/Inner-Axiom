@@ -27,6 +27,7 @@ public class NpcMovement : CharacterMovement
             FindNearestTarget();
             CalculatePath();
             FindSelectableTiles();
+            actualTargetTile.targetTile = true;
         }
         else
         {
