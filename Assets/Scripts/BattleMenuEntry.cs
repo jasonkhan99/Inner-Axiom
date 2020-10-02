@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BattleMenu : MonoBehaviour
+public class BattleMenuEntry : MonoBehaviour
 {
     [SerializeField] Image bullet;
 
