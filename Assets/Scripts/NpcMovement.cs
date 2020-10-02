@@ -43,14 +43,14 @@ public class NpcMovement : CharacterMovement
 
     void FindNearestTarget()
     {
-        GameObject[] targets = GameObject.FindGameObjectWithTag("Player");
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Player");
 
         GameObject nearest = null;
         float distance = Mathf.Infinity;
 
         foreach (GameObject obj in targets)
         {
-            float d = Vector3.distance(transform.position, obj.transform.position);
+            float d = Vector3.Distance(transform.position, obj.transform.position);
             
             if (d < distance)
             {
