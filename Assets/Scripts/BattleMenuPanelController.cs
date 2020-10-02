@@ -111,6 +111,20 @@ public class BattleMenuPanelController : MonoBehaviour
         TogglePos(ShowKey);
     }
 
+    public void SetLocked (int index, bool value)
+    {
+        if (index < 0 || index >= menuEntries.Count)
+        {
+            return;
+            menuEntries[index].IsLocked = value;
+        }
+        if (value && selection == index)
+        {
+            Next();
+        }
+    }
+
+
     void Start ()
     {
         panel.SetPosition(HideKey, false);
