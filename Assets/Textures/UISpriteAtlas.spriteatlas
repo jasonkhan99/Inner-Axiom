@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UISpriteAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 674f8a8b93cbd440bb56331b2ccbbf41, type: 3}
+    - {fileID: 2800000, guid: 7d0f02f9cc575451c9c4ad6f0785007c, type: 3}
+    totalSpriteSurfaceArea: 90987
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: d2c052135a9d24109951531a52a37421, type: 3}
+  - {fileID: 21300000, guid: c14ba66384df84edbb7bb5b82e2d8891, type: 3}
+  - {fileID: 21300000, guid: 6b8955e46326547e9af0448397302178, type: 3}
+  - {fileID: 21300000, guid: 50d58736000a84deebdd2367ddc032f9, type: 3}
+  - {fileID: 21300000, guid: 4a73da46b1cd04bcbba108cc992e0dea, type: 3}
+  - {fileID: 21300000, guid: 563fb8375908145c6b1006315b0514f5, type: 3}
+  - {fileID: 21300000, guid: 40835a8737a334630adc3ed8965a04a8, type: 3}
+  - {fileID: 21300000, guid: cdfe8708012ab42cda966b8470ed5681, type: 3}
+  - {fileID: 21300000, guid: 3e1eb648780ba4c42b85447205884bf9, type: 3}
+  - {fileID: 21300000, guid: 7d0f02f9cc575451c9c4ad6f0785007c, type: 3}
+  - {fileID: 21300000, guid: cb596dbaed5f74f068ede34244c5e69e, type: 3}
+  - {fileID: 21300000, guid: 1116a12c5ecdd47cca36e472381d9cb3, type: 3}
+  - {fileID: 21300000, guid: 80b90d2c9501f4e81a75081b5dd84f2c, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - MenuBulletLocked
+  - RedAttackPanel
+  - AbilityMenu
+  - MoreConversationArrow
+  - BlueAttackPanel
+  - MenuBullet
+  - Avatar
+  - AttackArrowFill
+  - ConversationPanel
+  - Dirt
+  - MenuBulletSelected
+  - ActionNameBacker
+  - AttackArrowBacker
+  m_Tag: UISpriteAtlas
+  m_IsVariant: 0
