@@ -60,34 +60,35 @@ public class BattleMenu : MonoBehaviour
     }
     States State
     { 
-    get { return state; }
-    set
-    {
-        if (state == value)
-        return;
-        state = value;
-        
-        if (IsLocked)
+        get { return state; }
+        set
         {
-        bullet.sprite = disabledSprite;
-        label.color = Color.gray;
-        outline.effectColor = new Color32(20, 36, 44, 255);
+            if (state == value)
+            {
+                return;
+                state = value;
+            }
+            if (IsLocked)
+            {
+                bullet.sprite = disabledSprite;
+                label.color = Color.gray;
+                outline.effectColor = new Color32(20, 36, 44, 255);
+            }
+            else if (IsSelected)
+            {
+                bullet.sprite = selectedSprite;
+                label.color = new Color32(249, 210, 118, 255);
+                outline.effectColor = new Color32(255, 160, 72, 255);
+            }
+            else
+            {
+                bullet.sprite = normalSprite;
+                label.color = Color.white;
+                outline.effectColor = new Color32(20, 36, 44, 255);
+            }
         }
-        else if (IsSelected)
-        {
-        bullet.sprite = selectedSprite;
-        label.color = new Color32(249, 210, 118, 255);
-        outline.effectColor = new Color32(255, 160, 72, 255);
-        }
-        else
-        {
-        bullet.sprite = normalSprite;
-        label.color = Color.white;
-        outline.effectColor = new Color32(20, 36, 44, 255);
-        }
-  }
-}
-States state;
+    }
+    States state;
     void Awake ()
     {
     outline = label.GetComponent<Outline>();
