@@ -38,7 +38,7 @@ public class NpcMovement : CharacterMovement
     void CalculatePath()
     {
         Tile targetTile = GetTargetTile(target);
-
+        FindPath(targetTile);
     }
 
     void FindNearestTarget()
