@@ -74,6 +74,26 @@ public class BattleMenuPanelController : MonoBehaviour
         }
     }
 
+    public void Next ()
+    {
+        for (int i = selection + 1; i < selection + menuEntries.Count; ++i)
+        {
+            int index = i % menuEntries.Count;
+            if (SetSelection(index))
+            break;
+        }
+    }
+
+    public void Previous ()
+    {
+        for (int i = selection - 1 + menuEntries.Count; i > selection; --i)
+        {
+            int index = i % menuEntries.Count;
+            if (SetSelection(index))
+            break;
+        }
+    }
+
     void Start ()
     {
         panel.SetPosition(HideKey, false);
