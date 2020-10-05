@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class WalkMovement: Movement
 {
     protected override bool ExpandSearch (Tile from, Tile to)
     {
