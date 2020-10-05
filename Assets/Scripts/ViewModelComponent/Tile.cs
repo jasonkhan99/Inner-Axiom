@@ -11,6 +11,11 @@ public class Tile : MonoBehaviour
 
     public Vector3 center { get { return new Vector3(pos.x, height * stepHeight, pos.y); }}
 
+    public GameObject content;
+
+    [HideInInspector] public Tile prev;
+    [HideInInspector] public int distance;
+
     void Match ()
     {
         transform.localPosition = new Vector3( pos.x, height * stepHeight / 2f, pos.y );
