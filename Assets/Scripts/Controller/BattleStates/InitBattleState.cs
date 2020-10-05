@@ -14,7 +14,7 @@ public class InitBattleState : BattleState
         SelectTile(p);
         SpawnTestUnits();
         yield return null;
-        owner.ChangeState<MoveTargetState>();
+        owner.ChangeState<SelectUnitState>();
     }
 
     void SpawnTestUnits ()
@@ -29,7 +29,7 @@ public class InitBattleState : BattleState
             Unit unit = instance.GetComponent<Unit>();
             unit.Place(board.GetTile(p));
             unit.Match();
-            
+
             Movement m = instance.AddComponent(components[i]) as Movement;
             m.range = 5;
             m.jumpHeight = 1;
