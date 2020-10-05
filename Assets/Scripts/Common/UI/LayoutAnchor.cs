@@ -4,6 +4,9 @@ using System.Collections;
 [RequireComponent(typeof(RectTransform))]
 public class LayoutAnchor : MonoBehaviour 
 {
+    RectTransform myRT;
+    RectTransform parentRT;
+
     void Awake ()
     {
         myRT = transform as RectTransform;
@@ -50,7 +53,7 @@ public class LayoutAnchor : MonoBehaviour
     {
         Vector2 myOffset = GetPosition(myRT, myAnchor);
         Vector2 parentOffset = GetPosition(parentRT, parentAnchor);
-        Vector2 anchorCenter = new Vector2( Mathf.Lerp(myRT.anchorMin.x, myRT.anchorMax.x, myRT.pivot.x), Mathf.Lerp(myRT.anchorMin.y, myRT.anchorMax.y, myRT.pivot.y) );
+        Vector2 anchorCenter = new Vector2( Mathf.Lerp(myRT.anchorMin.x, myRT.anchorMax.x, myRT.pivot.x), Mathf.Lerp(myRT.anchorMin.y, myRT.anchorMax.y, myRT.pivot.y));
         Vector2 myAnchorOffset = new Vector2(parentRT.rect.width * anchorCenter.x, parentRT.rect.height * anchorCenter.y);
         Vector2 myPivotOffset = new Vector2(myRT.rect.width * myRT.pivot.x, myRT.rect.height * myRT.pivot.y);
         Vector2 pos = parentOffset - myAnchorOffset - myOffset + myPivotOffset + offset;
