@@ -476,6 +476,7 @@ GameObject:
   - component: {fileID: 1856596438}
   - component: {fileID: 1856596437}
   - component: {fileID: 1856596440}
+  - component: {fileID: 1856596441}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -562,5 +563,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6293059789d5e47059d44ef4dd207746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionList:
+  - name: Show
+    myAnchor: 6
+    parentAnchor: 6
+    offset: {x: 20, y: 20}
+  - name: Hide
+    myAnchor: 8
+    parentAnchor: 6
+    offset: {x: 0, y: 20}
+--- !u!114 &1856596441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856596435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c005bfaea74479196728547d5653a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
