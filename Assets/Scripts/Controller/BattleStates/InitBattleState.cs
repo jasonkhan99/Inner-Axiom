@@ -34,5 +34,6 @@ public class InitBattleState : BattleState
             m.range = 5;
             m.jumpHeight = 1;
         }
+        units.Add(unit);
     }
 }

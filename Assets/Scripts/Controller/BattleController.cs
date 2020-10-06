@@ -13,9 +13,9 @@ public class BattleController : StateMachine
     public GameObject heroPrefab;
     public Tile currentTile { get { return board.GetTile(pos); }}
 
-    public AbilityMenuPanelController abilityMenuPanelController;
-    public Turn turn = new Turn();
-    public List<Unit> units = new List<Unit>();
+    public AbilityMenuPanelController abilityMenuPanelController { get { return owner.abilityMenuPanelController; }}
+    public Turn turn { get { return owner.turn; }}
+    public List<Unit> units { get { return owner.units; }}
 
     void Start ()
     {
