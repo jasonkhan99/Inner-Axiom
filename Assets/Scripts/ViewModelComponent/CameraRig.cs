@@ -14,6 +14,8 @@ public class CameraRig : MonoBehaviour
     void Update ()
     {
         if (follow)
-        _transform.position = Vector3.Lerp(_transform.position, follow.position, speed * Time.deltaTime);
+        {
+            _transform.position = Vector3.Lerp(_transform.position, follow.position, speed * Time.deltaTime);
+        }
     }
 }

@@ -1,42 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class InitBattleState : BattleState 
 {
-    public override void Enter ()
-    {
-        base.Enter ();
-        StartCoroutine(Init());
-    }
-    IEnumerator Init ()
-    {
-        board.Load( levelData );
-        Point p = new Point((int)levelData.tiles[0].x, (int)levelData.tiles[0].z);
-        SelectTile(p);
-        SpawnTestUnits();
-        yield return null;
-        owner.ChangeState<CutSceneState>();
-    }
+	public override void Enter ()
+	{
+		base.Enter ();
+		StartCoroutine(Init());
+	}
 
-    void SpawnTestUnits ()
-    {
-        System.Type[] components = new System.Type[]{ typeof(WalkMovement), typeof(FlyMovement), typeof(TeleportMovement) };
-        for (int i = 0; i < 3; ++i)
-        {
-            GameObject instance = Instantiate(owner.heroPrefab) as GameObject;
+	IEnumerator Init ()
+	{
+		board.Load( levelData );
+		Point p = new Point((int)levelData.tiles[0].x, (int)levelData.tiles[0].z);
+		SelectTile(p);
+		SpawnTestUnits();
+		yield return null;
+		owner.ChangeState<CutSceneState>();
+	}
 
-            Point p = new Point((int)levelData.tiles[i].x, (int)levelData.tiles[i].z);
+	void SpawnTestUnits ()
+	{
+		System.Type[] components = new System.Type[]{ typeof(WalkMovement), typeof(FlyMovement), typeof(TeleportMovement) };
+		for (int i = 0; i < 3; ++i)
+		{
+			GameObject instance = Instantiate(owner.heroPrefab) as GameObject;
 
-            Unit unit = instance.GetComponent<Unit>();
-            unit.Place(board.GetTile(p));
-            unit.Match();
+			Point p = new Point((int)levelData.tiles[i].x, (int)levelData.tiles[i].z);
 
-            Movement m = instance.AddComponent(components[i]) as Movement;
-            m.range = 5;
-            m.jumpHeight = 1;
+			Unit unit = instance.GetComponent<Unit>();
+			unit.Place(board.GetTile(p));
+			unit.Match();
 
-            owner.units.Add(unit);
-        }
-    }
+			Movement m = instance.AddComponent(components[i]) as Movement;
+			m.range = 5;
+			m.jumpHeight = 1;
+
+			units.Add(unit);
+		}
+	}
 }

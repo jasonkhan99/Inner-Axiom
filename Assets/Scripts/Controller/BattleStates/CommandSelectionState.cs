@@ -4,25 +4,26 @@ using System.Collections.Generic;
 
 public class CommandSelectionState : BaseAbilityMenuState 
 {
-    protected override void LoadMenu ()
-    {
-        if (menuOptions == null)
-        {
-            menuTitle = "Commands";
-            menuOptions = new List<string>(3);
-            menuOptions.Add("Move");
-            menuOptions.Add("Action");
-            menuOptions.Add("Wait");
-        }
-        owner.abilityMenuPanelController.Show(menuTitle, menuOptions);
-        owner.abilityMenuPanelController.SetLocked(0, owner.turn.hasUnitMoved);
-        owner.abilityMenuPanelController.SetLocked(1, owner.turn.hasUnitActed);
-    }
+	protected override void LoadMenu ()
+	{
+		if (menuOptions == null)
+		{
+			menuTitle = "Commands";
+			menuOptions = new List<string>(3);
+			menuOptions.Add("Move");
+			menuOptions.Add("Action");
+			menuOptions.Add("Wait");
+		}
 
-    protected override void Confirm ()
-    {
-        switch (owner.abilityMenuPanelController.selection)
-        {
+		abilityMenuPanelController.Show(menuTitle, menuOptions);
+		abilityMenuPanelController.SetLocked(0, turn.hasUnitMoved);
+		abilityMenuPanelController.SetLocked(1, turn.hasUnitActed);
+	}
+
+	protected override void Confirm ()
+	{
+		switch (abilityMenuPanelController.selection)
+		{
             case 0: // Move
                 owner.ChangeState<MoveTargetState>();
                 break;
@@ -32,20 +33,20 @@ public class CommandSelectionState : BaseAbilityMenuState
             case 2: // Wait
                 owner.ChangeState<SelectUnitState>();
                 break;
-        }
-    }
+		}
+	}
 
-    protected override void Cancel ()
-    {
-        if (owner.turn.hasUnitMoved && !owner.turn.lockMove)
-        {
-            owner.turn.UndoMove();
-            owner.abilityMenuPanelController.SetLocked(0, false);
-            SelectTile(owner.turn.actor.tile.pos);
-        }
-        else
-        {
-            owner.ChangeState<ExploreState>();
-        }
-    }
+	protected override void Cancel ()
+	{
+		if (turn.hasUnitMoved && !turn.lockMove)
+		{
+			turn.UndoMove();
+			abilityMenuPanelController.SetLocked(0, false);
+			SelectTile(turn.actor.tile.pos);
+		}
+		else
+		{
+			owner.ChangeState<ExploreState>();
+		}
+	}
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+
 public class StateMachine : MonoBehaviour 
 {
     public virtual State CurrentState
@@ -13,7 +14,9 @@ public class StateMachine : MonoBehaviour
     {
         T target = GetComponent<T>();
         if (target == null)
-        target = gameObject.AddComponent<T>();
+        {
+            target = gameObject.AddComponent<T>();
+        }
         return target;
     }
     
@@ -21,19 +24,27 @@ public class StateMachine : MonoBehaviour
     {
         CurrentState = GetState<T>();
     }
+
     protected virtual void Transition (State value)
     {
         if (_currentState == value || _inTransition)
-        return;
+        {
+            return;
+        }
+
         _inTransition = true;
         
         if (_currentState != null)
-        _currentState.Exit();
+        {
+            _currentState.Exit();
+        }
         
         _currentState = value;
         
         if (_currentState != null)
-        _currentState.Enter();
+        {
+            _currentState.Enter();
+        }
         
         _inTransition = false;
     }

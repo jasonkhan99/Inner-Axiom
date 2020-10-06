@@ -1,26 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+
 public class CategorySelectionState : BaseAbilityMenuState 
 {
-    protected override void LoadMenu ()
-    {
-        if (menuOptions == null)
-        {
-            menuTitle = "Action";
-            menuOptions = new List<string>(3);
-            menuOptions.Add("Attack");
-            menuOptions.Add("White Magic");
-            menuOptions.Add("Black Magic");
-        }
-        
-        owner.abilityMenuPanelController.Show(menuTitle, menuOptions);
-    }
+	protected override void LoadMenu ()
+	{
+		if (menuOptions == null)
+		{
+			menuTitle = "Action";
+			menuOptions = new List<string>(3);
+			menuOptions.Add("Attack");
+			menuOptions.Add("White Magic");
+			menuOptions.Add("Black Magic");
+		}
+		
+		abilityMenuPanelController.Show(menuTitle, menuOptions);
+	}
 
-    protected override void Confirm ()
-    {
-        switch (owner.abilityMenuPanelController.selection)
-        {
+	protected override void Confirm ()
+	{
+		switch (abilityMenuPanelController.selection)
+		{
             case 0:
                 Attack();
                 break;
@@ -30,28 +31,27 @@ public class CategorySelectionState : BaseAbilityMenuState
             case 2:
                 SetCategory(1);
                 break;
-        }
-    }
+		}
+	}
+	
+	protected override void Cancel ()
+	{
+		owner.ChangeState<CommandSelectionState>();
+	}
 
-    protected override void Cancel ()
-    {
-        owner.ChangeState<CommandSelectionState>();
-    }
-
-    void Attack ()
-    {
-        owner.turn.hasUnitActed = true;
-        if (owner.turn.hasUnitMoved)
+	void Attack ()
+	{
+		turn.hasUnitActed = true;
+		if (turn.hasUnitMoved)
         {
-            owner.turn.lockMove = true;
+			turn.lockMove = true;
         }
-        owner.ChangeState<CommandSelectionState>();
-    }
+		owner.ChangeState<CommandSelectionState>();
+	}
 
-    void SetCategory (int index)
-    {
-        ActionSelectionState.category = index;
-        owner.ChangeState<ActionSelectionState>();
-    }
+	void SetCategory (int index)
+	{
+		ActionSelectionState.category = index;
+		owner.ChangeState<ActionSelectionState>();
+	}
 }
-

@@ -8,14 +8,19 @@ public class Unit : MonoBehaviour
     {
         // Make sure old tile location is not still pointing to this unit
         if (tile != null && tile.content == gameObject)
-        tile.content = null;
+        {
+            tile.content = null;
+        }
         
         // Link unit and tile references
         tile = target;
         
         if (target != null)
-        target.content = gameObject;
+        {
+            target.content = gameObject;
+        }
     }
+    
     public void Match ()
     {
         transform.localPosition = tile.center;

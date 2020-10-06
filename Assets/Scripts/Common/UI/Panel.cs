@@ -34,6 +34,7 @@ public class Panel : MonoBehaviour
     [SerializeField] List<Position> positionList;
     Dictionary<string, Position> positionMap;
     LayoutAnchor anchor;
+
     void Awake ()
     {
         anchor = GetComponent<LayoutAnchor>();
@@ -47,6 +48,7 @@ public class Panel : MonoBehaviour
     public Position CurrentPosition { get; private set; }
     public Tweener Transition { get; private set; }
     public bool InTransition { get { return Transition != null; }}
+
     public Position this[string name]
     {
         get
@@ -63,6 +65,7 @@ public class Panel : MonoBehaviour
     {
         positionMap[p.name] = p;
     }
+    
     public void RemovePosition (Position p)
     {
         if (positionMap.ContainsKey(p.name))
