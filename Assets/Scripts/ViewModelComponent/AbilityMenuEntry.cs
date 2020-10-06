@@ -1,18 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-
-public class BattleMenuEntry : MonoBehaviour
+using System.Collections;
+public class AbilityMenuEntry : MonoBehaviour 
 {
     [SerializeField] Image bullet;
-
     [SerializeField] Sprite normalSprite;
     [SerializeField] Sprite selectedSprite;
     [SerializeField] Sprite disabledSprite;
-
     [SerializeField] Text label;
-
     Outline outline;
 
     public string Title
@@ -26,7 +21,7 @@ public class BattleMenuEntry : MonoBehaviour
     {
         None = 0,
         Selected = 1 << 0,
-        Locked = 1 << 1,
+        Locked = 1 << 1
     }
 
     public bool IsLocked
@@ -44,6 +39,7 @@ public class BattleMenuEntry : MonoBehaviour
             }
         }
     }
+
     public bool IsSelected
     {
         get { return (State & States.Selected) != States.None; }
@@ -59,6 +55,7 @@ public class BattleMenuEntry : MonoBehaviour
             }
         }
     }
+
     States State
     { 
         get { return state; }
@@ -67,8 +64,9 @@ public class BattleMenuEntry : MonoBehaviour
             if (state == value)
             {
                 return;
-                state = value;
             }
+            state = value;
+        
             if (IsLocked)
             {
                 bullet.sprite = disabledSprite;
@@ -90,14 +88,14 @@ public class BattleMenuEntry : MonoBehaviour
         }
     }
     States state;
+
     void Awake ()
     {
-    outline = label.GetComponent<Outline>();
+        outline = label.GetComponent<Outline>();
     }
 
     public void Reset ()
     {
         State = States.None;
     }
-    
 }
