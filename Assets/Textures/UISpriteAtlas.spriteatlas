@@ -44,7 +44,7 @@ SpriteAtlas:
     packables:
     - {fileID: 102900000, guid: 674f8a8b93cbd440bb56331b2ccbbf41, type: 3}
     - {fileID: 2800000, guid: 7d0f02f9cc575451c9c4ad6f0785007c, type: 3}
-    totalSpriteSurfaceArea: 90987
+    totalSpriteSurfaceArea: 125945
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -63,6 +63,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: cb596dbaed5f74f068ede34244c5e69e, type: 3}
   - {fileID: 21300000, guid: 1116a12c5ecdd47cca36e472381d9cb3, type: 3}
   - {fileID: 21300000, guid: 80b90d2c9501f4e81a75081b5dd84f2c, type: 3}
+  - {fileID: 21300000, guid: 4c0c2eed3d0394ab195c0d9eb20a4e99, type: 3}
   m_PackedSpriteNamesToIndex:
   - MenuBulletLocked
   - RedAttackPanel
@@ -77,5 +78,6 @@ SpriteAtlas:
   - MenuBulletSelected
   - ActionNameBacker
   - AttackArrowBacker
+  - EvilAvatar
   m_Tag: UISpriteAtlas
   m_IsVariant: 0
