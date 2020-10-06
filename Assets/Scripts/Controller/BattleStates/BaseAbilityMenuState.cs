@@ -10,14 +10,14 @@ public abstract class BaseAbilityMenuState : BattleState
     public override void Enter ()
     {
         base.Enter ();
-        SelectTile(turn.actor.tile.pos);
+        SelectTile(owner.turn.actor.tile.pos);
         LoadMenu();
     }
 
     public override void Exit ()
     {
         base.Exit ();
-        abilityMenuPanelController.Hide();
+        owner.abilityMenuPanelController.Hide();
     }
 
     protected override void OnFire (object sender, InfoEventArgs<int> e)
@@ -31,14 +31,14 @@ public abstract class BaseAbilityMenuState : BattleState
     protected override void OnMove (object sender, InfoEventArgs<Point> e)
     {
         if (e.info.x > 0 || e.info.y < 0)
-        abilityMenuPanelController.Next();
+        owner.abilityMenuPanelController.Next();
         else
-        abilityMenuPanelController.Previous();
+        owner.abilityMenuPanelController.Previous();
     }
 
     protected abstract void LoadMenu ();
 
     protected abstract void Confirm ();
-    
+
     protected abstract void Cancel ();
 }

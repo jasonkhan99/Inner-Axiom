@@ -8,7 +8,7 @@ public abstract class BattleState : State
     public LevelData levelData { get { return owner.levelData; }}
     public Transform tileSelectionIndicator { get { return owner.tileSelectionIndicator; }}
     public Point pos { get { return owner.pos; } set { owner.pos = value; }}
-    
+
     protected virtual void Awake ()
     {
         owner = GetComponent<BattleController>();

@@ -14,12 +14,12 @@ public class CategorySelectionState : BaseAbilityMenuState
             menuOptions.Add("Black Magic");
         }
         
-        abilityMenuPanelController.Show(menuTitle, menuOptions);
+        owner.abilityMenuPanelController.Show(menuTitle, menuOptions);
     }
 
     protected override void Confirm ()
     {
-        switch (abilityMenuPanelController.selection)
+        switch (owner.abilityMenuPanelController.selection)
         {
             case 0:
                 Attack();
@@ -40,10 +40,10 @@ public class CategorySelectionState : BaseAbilityMenuState
 
     void Attack ()
     {
-        turn.hasUnitActed = true;
-        if (turn.hasUnitMoved)
+        owner.turn.hasUnitActed = true;
+        if (owner.turn.hasUnitMoved)
         {
-            turn.lockMove = true;
+            owner.turn.lockMove = true;
         }
         owner.ChangeState<CommandSelectionState>();
     }

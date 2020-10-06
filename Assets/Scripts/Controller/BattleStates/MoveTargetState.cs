@@ -31,5 +31,9 @@ public class MoveTargetState : BattleState
         {
             owner.ChangeState<MoveSequenceState>();
         }
+        else
+        {
+            owner.ChangeState<CommandSelectionState>();
+        }
     }
 }

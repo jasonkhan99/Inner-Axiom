@@ -23,15 +23,15 @@ public class ActionSelectionState : BaseAbilityMenuState
             menuTitle = "Black Magic";
             SetOptions(blackMagicOptions);
         }
-        abilityMenuPanelController.Show(menuTitle, menuOptions);
+        owner.abilityMenuPanelController.Show(menuTitle, menuOptions);
     }
 
     protected override void Confirm ()
     {
-        turn.hasUnitActed = true;
-        if (turn.hasUnitMoved)
+        owner.turn.hasUnitActed = true;
+        if (owner.turn.hasUnitMoved)
         {
-            turn.lockMove = true;
+            owner.turn.lockMove = true;
         }
         owner.ChangeState<CommandSelectionState>();
     }

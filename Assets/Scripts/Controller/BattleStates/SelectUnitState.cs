@@ -11,8 +11,8 @@ public class SelectUnitState : BattleState
 
     IEnumerator ChangeCurrentUnit ()
     {
-        index = (index + 1) % units.Count;
-        turn.Change(units[index]);
+        index = (index + 1) % owner.units.Count;
+        owner.turn.Change(owner.units[index]);
         yield return null;
         owner.ChangeState<CommandSelectionState>();
     }

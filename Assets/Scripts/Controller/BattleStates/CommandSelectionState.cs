@@ -14,14 +14,14 @@ public class CommandSelectionState : BaseAbilityMenuState
             menuOptions.Add("Action");
             menuOptions.Add("Wait");
         }
-        abilityMenuPanelController.Show(menuTitle, menuOptions);
-        abilityMenuPanelController.SetLocked(0, turn.hasUnitMoved);
-        abilityMenuPanelController.SetLocked(1, turn.hasUnitActed);
+        owner.abilityMenuPanelController.Show(menuTitle, menuOptions);
+        owner.abilityMenuPanelController.SetLocked(0, owner.turn.hasUnitMoved);
+        owner.abilityMenuPanelController.SetLocked(1, owner.turn.hasUnitActed);
     }
 
     protected override void Confirm ()
     {
-        switch (abilityMenuPanelController.selection)
+        switch (owner.abilityMenuPanelController.selection)
         {
             case 0: // Move
                 owner.ChangeState<MoveTargetState>();
@@ -37,11 +37,11 @@ public class CommandSelectionState : BaseAbilityMenuState
 
     protected override void Cancel ()
     {
-        if (turn.hasUnitMoved && !turn.lockMove)
+        if (owner.turn.hasUnitMoved && !owner.turn.lockMove)
         {
-            turn.UndoMove();
-            abilityMenuPanelController.SetLocked(0, false);
-            SelectTile(turn.actor.tile.pos);
+            owner.turn.UndoMove();
+            owner.abilityMenuPanelController.SetLocked(0, false);
+            SelectTile(owner.turn.actor.tile.pos);
         }
         else
         {
