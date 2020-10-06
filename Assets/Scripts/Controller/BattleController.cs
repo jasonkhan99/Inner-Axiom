@@ -11,7 +11,6 @@ public class BattleController : StateMachine
     public Point pos;
 
     public GameObject heroPrefab;
-    public Unit currentUnit;
     public Tile currentTile { get { return board.GetTile(pos); }}
 
     public AbilityMenuPanelController abilityMenuPanelController;
