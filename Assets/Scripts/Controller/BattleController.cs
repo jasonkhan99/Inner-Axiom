@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class BattleController : StateMachine 
 {
@@ -13,9 +14,9 @@ public class BattleController : StateMachine
     public GameObject heroPrefab;
     public Tile currentTile { get { return board.GetTile(pos); }}
 
-    public AbilityMenuPanelController abilityMenuPanelController { get { return owner.abilityMenuPanelController; }}
-    public Turn turn { get { return owner.turn; }}
-    public List<Unit> units { get { return owner.units; }}
+    public AbilityMenuPanelController abilityMenuPanelController { get { return abilityMenuPanelController; }}
+    public Turn turn { get { return turn; }}
+    public List<Unit> units { get { return units; }}
 
     void Start ()
     {

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 public class InitBattleState : BattleState 
 {
     public override void Enter ()
@@ -33,7 +35,8 @@ public class InitBattleState : BattleState
             Movement m = instance.AddComponent(components[i]) as Movement;
             m.range = 5;
             m.jumpHeight = 1;
+
+            owner.units.Add(unit);
         }
-        units.Add(unit);
     }
 }

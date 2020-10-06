@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-public class SelectUnitState : BattleState 
+
+public class ExploreState : BattleState 
 {
     protected override void OnMove (object sender, InfoEventArgs<Point> e)
     {
@@ -9,10 +10,7 @@ public class SelectUnitState : BattleState
     
     protected override void OnFire (object sender, InfoEventArgs<int> e)
     {
-        GameObject content = owner.currentTile.content;
-        if (content != null)
-        {
-            owner.ChangeState<MoveTargetState>();
-        }
+        if (e.info == 0)
+        owner.ChangeState<CommandSelectionState>();
     }
 }
