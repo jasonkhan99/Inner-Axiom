@@ -38,19 +38,17 @@ public class AbilityTargetState : BattleState
 	}
 	
 	protected override void OnFire (object sender, InfoEventArgs<int> e)
-	{
-		if (e.info == 0)
-		{
-			turn.hasUnitActed = true;
-			if (turn.hasUnitMoved)
-				turn.lockMove = true;
-			owner.ChangeState<CommandSelectionState>();
-		}
-		else
-		{
-			owner.ChangeState<CategorySelectionState>();
-		}
-	}
+    {
+        if (e.info == 0)
+        {
+            if (ar.directionOriented || tiles.Contains(board.GetTile(pos)))
+                owner.ChangeState<ConfirmAbilityTargetState>();
+        }
+        else
+        {
+            owner.ChangeState<CategorySelectionState>();
+        }
+    }
 	
 	void ChangeDirection (Point p)
 	{
