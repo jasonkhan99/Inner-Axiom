@@ -4,17 +4,17 @@ using System.Collections.Generic;
 
 public class CategorySelectionState : BaseAbilityMenuState 
 {
-    public override void Enter ()
-    {
-        base.Enter ();
-        statPanelController.ShowPrimary(turn.actor.gameObject);
-    }
-
-    public override void Exit ()
-    {
-        base.Exit ();
-        statPanelController.HidePrimary();
-    }
+	public override void Enter ()
+	{
+		base.Enter ();
+		statPanelController.ShowPrimary(turn.actor.gameObject);
+	}
+	
+	public override void Exit ()
+	{
+		base.Exit ();
+		statPanelController.HidePrimary();
+	}
 
 	protected override void LoadMenu ()
 	{
@@ -34,15 +34,15 @@ public class CategorySelectionState : BaseAbilityMenuState
 	{
 		switch (abilityMenuPanelController.selection)
 		{
-            case 0:
-                Attack();
-                break;
-            case 1:
-                SetCategory(0);
-                break;
-            case 2:
-                SetCategory(1);
-                break;
+		case 0:
+			Attack();
+			break;
+		case 1:
+			SetCategory(0);
+			break;
+		case 2:
+			SetCategory(1);
+			break;
 		}
 	}
 	
@@ -52,11 +52,11 @@ public class CategorySelectionState : BaseAbilityMenuState
 	}
 
 	void Attack ()
-    {
-        turn.ability = turn.actor.GetComponentInChildren<AbilityRange>().gameObject;
-        owner.ChangeState<AbilityTargetState>();
-    }
-    
+	{
+		turn.ability = turn.actor.GetComponentInChildren<AbilityRange>().gameObject;
+		owner.ChangeState<AbilityTargetState>();
+	}
+
 	void SetCategory (int index)
 	{
 		ActionSelectionState.category = index;
