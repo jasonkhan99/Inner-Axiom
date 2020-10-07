@@ -20,23 +20,35 @@ public class InitBattleState : BattleState
 	}
 
 	void SpawnTestUnits ()
-	{
-		System.Type[] components = new System.Type[]{ typeof(WalkMovement), typeof(FlyMovement), typeof(TeleportMovement) };
-		for (int i = 0; i < 3; ++i)
-		{
-			GameObject instance = Instantiate(owner.heroPrefab) as GameObject;
+    {
+        string[] jobs = new string[]{"Rogue", "Warrior", "Wizard"};
+        for (int i = 0; i < jobs.Length; ++i)
+        {
+            GameObject instance = Instantiate(owner.heroPrefab) as GameObject;
 
-			Point p = new Point((int)levelData.tiles[i].x, (int)levelData.tiles[i].z);
+            Stats s = instance.AddComponent<Stats>();
+            s[StatTypes.LVL] = 1;
 
-			Unit unit = instance.GetComponent<Unit>();
-			unit.Place(board.GetTile(p));
-			unit.Match();
+            GameObject jobPrefab = Resources.Load<GameObject>( "Jobs/" + jobs[i] );
+            GameObject jobInstance = Instantiate(jobPrefab) as GameObject;
+            jobInstance.transform.SetParent(instance.transform);
 
-			Movement m = instance.AddComponent(components[i]) as Movement;
-			m.range = 5;
-			m.jumpHeight = 1;
+            Job job = jobInstance.GetComponent<Job>();
+            job.Employ();
+            job.LoadDefaultStats();
 
-			units.Add(unit);
-		}
-	}
+            Point p = new Point((int)levelData.tiles[i].x, (int)levelData.tiles[i].z);
+
+            Unit unit = instance.GetComponent<Unit>();
+            unit.Place(board.GetTile(p));
+            unit.Match();
+
+            instance.AddComponent<WalkMovement>();
+
+            units.Add(unit);
+
+            Rank rank = instance.AddComponent<Rank>();
+            rank.Init (10);
+        }
+    }
 }
