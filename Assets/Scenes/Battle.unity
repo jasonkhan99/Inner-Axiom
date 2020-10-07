@@ -579,7 +579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   primaryPanel: {fileID: 2138562682}
-  secondaryPanel: {fileID: 0}
+  secondaryPanel: {fileID: 1790374157}
 --- !u!1 &546767315
 GameObject:
   m_ObjectHideFlags: 0
