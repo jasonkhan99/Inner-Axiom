@@ -10,6 +10,9 @@ public class Turn
     Tile startTile;
     Directions startDir;
 
+    public GameObject ability;
+
+
     public void Change (Unit current)
     {
         actor = current;
