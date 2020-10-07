@@ -1862,6 +1862,7 @@ MonoBehaviour:
     y: 0
   abilityMenuPanelController: {fileID: 2021689276}
   units: []
+  statPanelController: {fileID: 308736273}
 --- !u!4 &1854067450
 Transform:
   m_ObjectHideFlags: 0

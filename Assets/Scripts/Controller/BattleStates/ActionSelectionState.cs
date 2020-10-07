@@ -4,6 +4,18 @@ using System.Collections.Generic;
 
 public class ActionSelectionState : BaseAbilityMenuState 
 {
+    public override void Enter ()
+    {
+        base.Enter ();
+        statPanelController.ShowPrimary(turn.actor.gameObject);
+    }
+
+    public override void Exit ()
+    {
+        base.Exit ();
+        statPanelController.HidePrimary();
+    }
+    
 	public static int category;
 	string[] whiteMagicOptions = new string[] { "Cure", "Raise", "Holy" };
 	string[] blackMagicOptions = new string[] { "Fire", "Ice", "Lightning" };
