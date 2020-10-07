@@ -13,8 +13,8 @@ public abstract class BattleState : State
 	public AbilityMenuPanelController abilityMenuPanelController { get { return owner.abilityMenuPanelController; }}
 	public Turn turn { get { return owner.turn; }}
 	public List<Unit> units { get { return owner.units; }}
-
     public StatPanelController statPanelController { get { return owner.statPanelController; }}
+    public HitSuccessIndicator hitSuccessIndicator { get { return owner.hitSuccessIndicator; }}
 
 	protected virtual void Awake ()
 	{
@@ -73,7 +73,7 @@ public abstract class BattleState : State
             statPanelController.HidePrimary();
         }
     }
-    
+
     protected virtual void RefreshSecondaryStatPanel (Point p)
     {
         Unit target = GetUnit(p);

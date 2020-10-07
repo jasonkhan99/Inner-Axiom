@@ -16,7 +16,12 @@ public class ConfirmAbilityTargetState : BattleState
 		board.SelectTiles(tiles);
 		FindTargets();
 		RefreshPrimaryStatPanel(turn.actor.tile.pos);
-		SetTarget(0);
+
+		if (turn.targets.Count > 0)
+		{
+			hitSuccessIndicator.Show();
+			SetTarget(0);
+		}
 	}
 
 	public override void Exit ()
@@ -25,6 +30,7 @@ public class ConfirmAbilityTargetState : BattleState
 		board.DeSelectTiles(tiles);
 		statPanelController.HidePrimary();
 		statPanelController.HideSecondary();
+		hitSuccessIndicator.Hide();
 	}
 
 	protected override void OnMove (object sender, InfoEventArgs<Point> e)
@@ -73,7 +79,30 @@ public class ConfirmAbilityTargetState : BattleState
 			index = turn.targets.Count - 1;
 		if (index >= turn.targets.Count)
 			index = 0;
+
 		if (turn.targets.Count > 0)
+		{
 			RefreshSecondaryStatPanel(turn.targets[index].pos);
+			UpdateHitSuccessIndicator ();
+		}
+	}
+
+	void UpdateHitSuccessIndicator ()
+	{
+		int chance = CalculateHitRate();
+		int amount = EstimateDamage();
+		hitSuccessIndicator.SetStats(chance, amount);
+	}
+
+	int CalculateHitRate ()
+	{
+		Unit target = turn.targets[index].content.GetComponent<Unit>();
+		HitRate hr = turn.ability.GetComponentInChildren<HitRate>();
+		return hr.Calculate(turn.actor, target);
+	}
+
+	int EstimateDamage ()
+	{
+		return 50;
 	}
 }
