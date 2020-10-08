@@ -60,8 +60,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f0121dfb4ea46679876d14ffe3ec0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontal: 5
-  vertical: 5
+  horizontal: 2
+  vertical: 2
 --- !u!114 &7056471817903645150
 MonoBehaviour:
   m_ObjectHideFlags: 0

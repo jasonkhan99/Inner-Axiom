@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   list:
   - messages:
-    - Hello!
-    - How are you?
-    - My name is Bob.
+    - Lorem ipsum dolor sit amet!
+    - consectetur adipiscing elit,
+    - sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
     speaker: {fileID: 21300000, guid: 40835a8737a334630adc3ed8965a04a8, type: 3}
     anchor: 2
   - messages:
-    - Prepare to die!
-    - I will kill you!
+    - Ut enim ad minim veniam!
+    - quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     speaker: {fileID: 21300000, guid: 4c0c2eed3d0394ab195c0d9eb20a4e99, type: 3}
     anchor: 6
   - messages:
-    - Oh... um... okay...
+    - Duis aute irure dolor...
     speaker: {fileID: 21300000, guid: 40835a8737a334630adc3ed8965a04a8, type: 3}
     anchor: 2
